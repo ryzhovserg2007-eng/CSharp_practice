@@ -1,0 +1,76 @@
+namespace ConsoleApp14
+{
+  internal class Program
+  {
+    static void Main(string[] args)
+    {
+      Cat cat1 = new Cat(1);
+      cat1.Metod1(); cat1.Metod2(); cat1.Metod3();
+      Animal cat2 = new Cat(2);
+      cat2.Metod1(); cat2.Metod2(); cat2.Metod3();
+      Dog dog1 = new Dog(3);
+      dog1.Metod3();
+      Animal dog2 = new Dog(4);
+      dog2.Metod3();
+    }
+  }
+
+  public abstract class Animal
+  {
+    private int _number;
+    
+    public abstract string Word { get; }
+
+    public Animal(int number)
+    {
+      _number = number;
+    }
+
+    public void Metod1()
+    {
+      Console.WriteLine("Animal 1");
+    }
+
+    public virtual void Metod2()
+    {
+      Console.WriteLine("Animal 2");
+    }
+
+    public abstract void Metod3();
+    // не имеет тело - {}
+  }
+
+  public class Cat : Animal
+  {
+    public override string Word { get { return "Hi"; } }
+
+    public Cat(int number) : base(number) { }
+
+    public new void Metod1()
+    {
+      Console.WriteLine("Cat 1");
+    }
+
+    public override void Metod2()
+    {
+      Console.WriteLine("Cat 2");
+    }
+
+    public override void Metod3()
+    {
+      Console.WriteLine("Cat 3");
+    }
+  }
+
+  public class Dog : Animal
+  {
+    public override string Word { get { return "Hi"; } }
+
+    public Dog(int number) : base(number) { }
+
+    public override void Metod3()
+    {
+      Console.WriteLine("Dog 3");
+    }
+  }
+}
